@@ -1,5 +1,0 @@
-G:\projects\dotnet4\AspxToRazorConverter\AspxToRazorConverter\bin\Debug\AspxToRazorConverter.dll
-G:\projects\dotnet4\AspxToRazorConverter\AspxToRazorConverter\bin\Debug\AspxToRazorConverter.pdb
-G:\projects\dotnet4\AspxToRazorConverter\AspxToRazorConverter\obj\Debug\ResolveAssemblyReference.cache
-G:\projects\dotnet4\AspxToRazorConverter\AspxToRazorConverter\obj\Debug\AspxToRazorConverter.dll
-G:\projects\dotnet4\AspxToRazorConverter\AspxToRazorConverter\obj\Debug\AspxToRazorConverter.pdb
