@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>G:\downloads\dotnet\aspnetmvc\NerdDinner_2.0\NerdDinner_2.0\NerdDinner\Views</StartArguments>
+    <StartArguments>G:\projects\dotnet4\MvcWebform1\MvcWebform1\Views\Shared\LogOnUserControl.ascx</StartArguments>
   </PropertyGroup>
 </Project>

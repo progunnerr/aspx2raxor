@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web.RegularExpressions;
 using System.IO;
 using Dlrsoft.AspxToRazorConverter.Dom;
+using Dlrsoft.AspxToRazorConverter.CSharp;
 
 namespace Dlrsoft.AspxToRazorConverter
 {
@@ -57,6 +58,10 @@ namespace Dlrsoft.AspxToRazorConverter
             //4. Find all the literals between code blocks
             ParseLiteralBlocks();
 
+            //5. Parse C# code
+            CodeBlockStream stream = new CodeBlockStream(_doc);
+            AstGenerator generator = new AstGenerator();
+            generator.Build(stream);
 
             return _doc;
         }
@@ -194,16 +199,13 @@ namespace Dlrsoft.AspxToRazorConverter
                     }
                     else
                     {
+                        cb.NextCodeBlock = (CodeBlock)block;
                         cb = (CodeBlock)block;
                     }
                 }
                 block.Index = m.Index;
                 block.Length = m.Length;
                 _doc.Blocks.Add(block);
-            }
-            if (cb != null)
-            {
-                cb.IsLast = true;
             }
         }
 
@@ -228,5 +230,8 @@ namespace Dlrsoft.AspxToRazorConverter
             }
             _doc.Blocks = blocks;
         }
+
+
+
     }
 }

@@ -8,6 +8,7 @@ namespace Dlrsoft.AspxToRazorConverter.Dom
     public class CodeBlock : Block
     {
         public bool IsFirst { get; set; }
-        public bool IsLast { get; set; }
+        public CodeBlock NextCodeBlock { get; set; }
+        public bool IsLast { get { return NextCodeBlock == null; } }
     }
 }
