@@ -1,7 +1,7 @@
 grammar cs;
 
 options {
-	output=AST;
+    output=AST;
     memoize=true;
     language=CSharp2;
 }
