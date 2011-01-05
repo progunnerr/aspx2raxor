@@ -940,6 +940,7 @@ selection_statement:
 if_statement:
 	// else goes with closest if
 	'if'   '('   boolean_expression   ')'   embedded_statement (('else') => else_statement)?
+	-> ^('if' boolean_expression embedded_statement+)
 	;
 else_statement:
 	'else'   embedded_statement	;
@@ -962,11 +963,17 @@ iteration_statement:
 	| for_statement
 	| foreach_statement ;
 while_statement:
-	'while'   '('   boolean_expression   ')'   embedded_statement ;
+	'while'   '('   boolean_expression   ')'   embedded_statement 
+	-> ^('while' boolean_expression embedded_statement);
 do_statement:
-	'do'   embedded_statement   'while'   '('   boolean_expression   ')'   ';' ;
+	'do'   embedded_statement   'while'   '('   boolean_expression   ')'   ';' 
+	-> ^('do' embedded_statement boolean_expression)
+	;
 for_statement:
-	'for'   '('   for_initializer?   ';'   for_condition?   ';'   for_iterator?   ')'   embedded_statement ;
+	'for'   '('   for_initializer?   ';'   for_condition?   ';'   for_iterator?   ')'   embedded_statement 
+	-> ^ ('for' for_initializer? for_condition? for_iterator? embedded_statement)
+	;
+
 for_initializer:
 	(local_variable_declaration) => local_variable_declaration
 	| statement_expression_list 
@@ -1017,8 +1024,11 @@ unchecked_statement:
 	'unchecked'   block ;
 lock_statement:
 	'lock'   '('  expression   ')'   embedded_statement ;
-using_statement:
-	'using'   '('    resource_acquisition   ')'    embedded_statement ;
+using_statement
+	:		
+	'using'   '('    resource_acquisition   ')'    embedded_statement 
+	-> ^('using' resource_acquisition embedded_statement)
+	;
 resource_acquisition:
 	(local_variable_declaration) => local_variable_declaration
 	| expression ;
